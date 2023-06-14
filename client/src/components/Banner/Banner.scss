@@ -1,0 +1,127 @@
+.bannerSwiperinitialized {
+    overflow: visible;
+}
+
+.banner {
+    position: relative;
+    overflow: hidden;
+
+    &__show {
+        width: 100%;
+        height: 520px;
+        position: relative;
+
+        &-image,
+        &-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(77deg, rgba(0, 0, 0, .8) 25%, transparent 85%);
+        background-color: transparent;
+
+        &--down {
+            width: 100%;
+            height: 60px;
+            background-image: linear-gradient(180deg, transparent 10%, rgba(0, 0, 0, .8), #000);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+    }
+
+    &__movie {
+        position: absolute;
+        z-index: var(--z-pro);
+        top: 30%;
+        left: 10%;
+        color: #fff;
+
+        &-genres {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        &-genre {
+            position: relative;
+
+            &+& {
+                margin-left: 18px;
+            }
+
+            &:not(:last-child)::before {
+                content: '';
+                width: 5px;
+                height: 5px;
+                background-color: #333;
+                border-radius: 50%;
+                position: absolute;
+                bottom: 5px;
+                left: calc(100% + 6.5px);
+            }
+        }
+
+        &-desc {
+            max-width: 520px;
+            height: 100px;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            color: #D1D5DB;
+            margin-top: 16px;
+        }
+
+        &-btn {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+
+            font-size: 16px;
+            padding: 8px 30px;
+            margin-top: 20px;
+            border-radius: 8px;
+
+            a {
+                color: #000;
+                margin-left: 8px;
+                font-weight: 600;
+
+            }
+        }
+    }
+
+    &__carousel {
+        padding: 0 0 30px;
+        position: relative;
+        z-index: var(--z-pro);
+
+        &-actions {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: -100px;
+            right: 60px;
+
+            button {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                color: #fff;
+                background-color: transparent;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                margin-left: 12px;
+            }
+        }
+
+    }
+}

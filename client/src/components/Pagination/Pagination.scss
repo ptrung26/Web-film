@@ -1,0 +1,22 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+    &__item {
+        width: 35px;
+        height: 35px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 400;
+        cursor: pointer;
+
+        &.active {
+            background-color: #688aff;
+        }
+    }
+}

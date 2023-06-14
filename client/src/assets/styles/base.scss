@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+
+    font-size: 16px;
+}
+
+body {
+    background-color: #1c1c1e !important;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+}

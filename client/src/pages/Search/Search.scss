@@ -1,0 +1,25 @@
+.Search {
+    margin-top: calc(var(--header-height) + 40px);
+    padding: 0 30px;
+
+    &__total {
+        color: #fff;
+        font-weight: 500;
+        font-size: 24px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+    }
+
+    &__results {
+        display: flex;
+        margin-left: -20px;
+        gap: 20px 0;
+        flex-wrap: wrap;
+
+
+        &-item {
+            width: calc(100% / 6 - 20px);
+            margin-left: 20px;
+        }
+    }
+}
