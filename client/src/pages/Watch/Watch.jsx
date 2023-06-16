@@ -62,7 +62,6 @@ function Watch() {
       content: commentValue,
     };
     const { response, err } = await reviewApi.add(body);
-    if (err) console.log(err);
     if (response) {
       setReviewList([...reviewList, response]);
       setCommentValue("");

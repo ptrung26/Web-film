@@ -24,7 +24,6 @@ function MovieDetail() {
   const [mediaTralers, setMediaTralers] = useState();
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
-  console.log("TEST");
   useEffect(() => {
     if (location.state && location.state.status === "signin_success") {
       toast.info("Sign successfully", {
@@ -49,13 +48,7 @@ function MovieDetail() {
 
       if (response?.data) {
         setMediaTralers(response.data.results);
-      } else {
-        console.log(response.data);
-      }
-
-      if (err) {
-        console.log(err);
-      }
+      } 
     };
 
     getMediaTralers();
@@ -143,7 +136,6 @@ function MovieDetail() {
       };
 
       const { response, err } = await favoriteApi.add(body);
-      if (err) console.log(err);
       if (response) {
         dispatch(addFavorite(response));
         setIsFavorite(true);

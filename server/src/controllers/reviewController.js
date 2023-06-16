@@ -65,7 +65,6 @@ const getReviewsOfMedia = async (req, res) => {
       .sort({ createdAt: -1 });
     responseHandler.ok(res, reviews);
   } catch (e) {
-    console.log(e);
     responseHandler.error(res);
   }
 };

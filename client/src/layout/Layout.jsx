@@ -32,7 +32,6 @@ function Layout() {
       const { response, err } = await favoriteApi.getList();
       if (response) dispatch(setListFavorites(response));
       if (err) {
-        console.log(err);
       }
     };
 

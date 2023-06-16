@@ -59,7 +59,7 @@ const signin = async (req, res) => {
       ...user._doc,
       id: user.id,
     });
-  } catch {
+  } catch (err) {
     responseHandler.error(res);
   }
 };

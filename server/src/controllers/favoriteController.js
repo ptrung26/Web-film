@@ -25,7 +25,6 @@ const addFavorite = async (req, res) => {
 
 const removeFavorite = async (req, res) => {
   const { mediaId } = req.params;
-  console.log(mediaId);
   try {
     const deletedFavorite = await favoriteModel.findOneAndDelete({
       mediaId,
