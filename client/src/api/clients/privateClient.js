@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = `https://great-film-api.vercel.app/api/v1/`;
+const baseURL = process.env.REACT_APP_API_URL;
 const privateClient = axios.create({
   baseURL,
 });
