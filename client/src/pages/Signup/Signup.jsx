@@ -24,7 +24,7 @@ export default function Signup() {
         .min(8, "Username must be at least 8 characters")
         .required("Username cannot be empty"),
       password: Yup.string()
-        .min(8, "Password must be between 6 and 20 characters")
+        .min(6, "Password must be between 6 and 20 characters")
         .max(20, "Password must be between 6 and 20 characters")
         .required("Password cannot be empty")
         .matches(
