@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useSearchParams } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
@@ -11,6 +11,9 @@ import { SwiperConfig } from "../../components/Swiper/SwiperConfig";
 import "./Search.scss";
 
 export const Search = () => {
+  useEffect(() => {
+    document.title = "Search page";
+  });
   const [searchParams, setSearchParams] = useSearchParams();
   const { data, isLoading } = useQuery(
     [

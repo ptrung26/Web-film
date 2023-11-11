@@ -50,6 +50,7 @@ export default function Signin() {
   });
 
   useEffect(() => {
+    document.title = "Sign in";
     if (!errorMessage) {
       return;
     }

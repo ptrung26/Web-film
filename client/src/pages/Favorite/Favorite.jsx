@@ -6,7 +6,11 @@ import "./Favorite.scss";
 import { Link } from "react-router-dom";
 import { removeFavorite } from "../../redux/features/userSlice";
 import { ToastContainer, toast } from "react-toastify";
+import { useEffect } from "react";
 export default function Favorite() {
+  useEffect(() => {
+    document.title = "Favorite";
+  });
   const { listFavorites } = useSelector((state) => state.user);
   console.log(listFavorites);
   const dispatch = useDispatch();

@@ -40,6 +40,7 @@ function Watch() {
   );
 
   useEffect(() => {
+    document.title = "Watch movie";
     const getReviewList = async () => {
       const response = await reviewApi.getReviewByMediaId({ mediaId: id });
       setReviewList(response);

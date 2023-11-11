@@ -33,6 +33,7 @@ export default function Discover() {
   const searchResult = searchData?.results || [];
 
   useEffect(() => {
+    document.title = "Discover";
     const queries = Array.from(searchParams).reduce((acc, [key, value]) => {
       acc[key] = acc[key] ? acc[key] + "," + value : value;
       return acc;

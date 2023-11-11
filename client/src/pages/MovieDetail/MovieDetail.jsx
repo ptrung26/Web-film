@@ -25,6 +25,7 @@ function MovieDetail() {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
   useEffect(() => {
+    document.title = "Movie detail";
     if (location.state && location.state.status === "signin_success") {
       toast.info("Sign successfully", {
         position: "top-right",
@@ -48,7 +49,7 @@ function MovieDetail() {
 
       if (response?.data) {
         setMediaTralers(response.data.results);
-      } 
+      }
     };
 
     getMediaTralers();

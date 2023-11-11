@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import tmdbConfigs from "../../api/configs/tmdbConfig";
 import Banner from "../../components/Banner/Banner";
 import Category from "../../components/Category/Category";
@@ -5,6 +6,9 @@ import Category from "../../components/Category/Category";
 import "./Home.scss";
 
 function Home() {
+  useEffect(() => {
+    document.title = "Home page";
+  });
   return (
     <>
       <Banner

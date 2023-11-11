@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function Info() {
   const { user } = useSelector();
+
+  useEffect(() => {
+    document.title = "Info";
+  });
   return (
     <div className="Info">
       <h2 className="Info__heading">Account Settings</h2>

@@ -55,6 +55,7 @@ export default function Signup() {
   });
 
   useEffect(() => {
+    document.title = "Sign up";
     if (!errorMessage) {
       return;
     }
