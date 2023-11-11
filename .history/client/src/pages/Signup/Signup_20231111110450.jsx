@@ -14,26 +14,21 @@ export default function Signup() {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      username: "",
-      password: "",
-      confirmPassword: "",
+      su_username: "",
+      su_password: "",
+      su_confirmPassword: "",
     },
     validationSchema: Yup.object({
-      username: Yup.string()
-        .matches(/^[a-zA-Z0-9]*$/, "Only letters and numbers are allowed")
-        .min(8, "Username must be at least 8 characters")
-        .required("Username cannot be empty"),
-      password: Yup.string()
-        .min(8, "Password must be between 6 and 20 characters")
-        .max(20, "Password must be between 6 and 20 characters")
-        .required("Password cannot be empty")
-        .matches(
-          /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/,
-          "Password must contain at least one letter, one digit, and one special character"
-        ),
-      confirmPassword: Yup.string()
-        .required("Please confirm your password")
-        .oneOf([Yup.ref("password")], "Password confirmation does not match"),
+      su_username: Yup.string()
+        .min(8, "Tài khoản phải ít nhất 3 ký tự")
+        .required("Tài khoản không được bỏ trống"),
+      su_password: Yup.string()
+        .min(8, "Mật khẩu phải từ 6 - 20 ký tự")
+        .max(20, "Mật khẩu phải từ 6 - 20 ký tự")
+        .required("Mật khẩu không được bỏ trống"),
+      su_confirmPassword: Yup.string()
+        .required("Please retype your password.")
+        .oneOf([Yup.ref("password")], "Your passwords do not match."),
     }),
     onSubmit: async (values) => {
       values.color = randomRGBColor();
@@ -95,6 +90,20 @@ export default function Signup() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.username}
+            />
+            {formik.touched.username && formik.errors.username ? (
+              <p className="error-message">{formik.errors.username}</p>
+            ) : null}
+          </div>
+          <div className="input-group">
+            <input
+              id="displayName"
+              name="displayName"
+              type="text"
+              placeholder="Display name"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.displayName}
             />
             {formik.touched.username && formik.errors.username ? (
               <p className="error-message">{formik.errors.username}</p>

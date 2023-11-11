@@ -4,13 +4,15 @@ import responseHandler from "../handlers/responseHandler.js";
 
 const signup = async (req, res) => {
   try {
-    const { username, password, color } = req.body;
+    const { username, password, displayName, color } = req.body;
     const checkUser = await userModel.findOne({ username });
+
     if (checkUser)
       return responseHandler.badrequest(res, "username already used");
 
     const user = new userModel();
 
+    user.displayname = displayName;
     user.username = username;
     user.password = password;
     user.color = color;
@@ -27,10 +29,8 @@ const signup = async (req, res) => {
       token,
       ...user._doc,
       id: user.id,
-      username: user.username,
     });
-  } catch (err) {
-    console.log(err);
+  } catch {
     responseHandler.error(res);
   }
 };

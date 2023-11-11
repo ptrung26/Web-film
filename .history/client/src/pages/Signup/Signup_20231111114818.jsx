@@ -17,6 +17,7 @@ export default function Signup() {
       username: "",
       password: "",
       confirmPassword: "",
+      displayname: "",
     },
     validationSchema: Yup.object({
       username: Yup.string()

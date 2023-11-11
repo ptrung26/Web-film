@@ -18,7 +18,7 @@ const signup = async (req, res) => {
     await user.save();
 
     const token = jsonwebtoken.sign(
-      { data: user.id },
+      { data: user.username },
       process.env.TOKEN_SECRET,
       { expiresIn: "24h" }
     );
@@ -27,7 +27,6 @@ const signup = async (req, res) => {
       token,
       ...user._doc,
       id: user.id,
-      username: user.username,
     });
   } catch (err) {
     console.log(err);

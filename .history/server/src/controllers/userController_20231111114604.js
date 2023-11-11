@@ -13,6 +13,7 @@ const signup = async (req, res) => {
 
     user.username = username;
     user.password = password;
+    user.displayname = "";
     user.color = color;
 
     await user.save();
@@ -27,7 +28,6 @@ const signup = async (req, res) => {
       token,
       ...user._doc,
       id: user.id,
-      username: user.username,
     });
   } catch (err) {
     console.log(err);

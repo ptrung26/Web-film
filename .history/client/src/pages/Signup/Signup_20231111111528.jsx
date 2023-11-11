@@ -14,16 +14,16 @@ export default function Signup() {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      username: "",
-      password: "",
-      confirmPassword: "",
+      su_username: "",
+      su_password: "",
+      su_confirmPassword: "",
     },
     validationSchema: Yup.object({
-      username: Yup.string()
+      su_username: Yup.string()
         .matches(/^[a-zA-Z0-9]*$/, "Only letters and numbers are allowed")
         .min(8, "Username must be at least 8 characters")
         .required("Username cannot be empty"),
-      password: Yup.string()
+      su_password: Yup.string()
         .min(8, "Password must be between 6 and 20 characters")
         .max(20, "Password must be between 6 and 20 characters")
         .required("Password cannot be empty")
@@ -31,9 +31,12 @@ export default function Signup() {
           /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/,
           "Password must contain at least one letter, one digit, and one special character"
         ),
-      confirmPassword: Yup.string()
+      su_confirmPassword: Yup.string()
         .required("Please confirm your password")
-        .oneOf([Yup.ref("password")], "Password confirmation does not match"),
+        .oneOf(
+          [Yup.ref("su_password")],
+          "Password confirmation does not match"
+        ),
     }),
     onSubmit: async (values) => {
       values.color = randomRGBColor();
@@ -88,44 +91,47 @@ export default function Signup() {
           <div className="input-group">
             <br></br>
             <input
-              id="username"
-              name="username"
+              id="su_username"
+              name="su_username"
               type="text"
               placeholder="User name"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.username}
+              value={formik.values.su_username}
             />
-            {formik.touched.username && formik.errors.username ? (
-              <p className="error-message">{formik.errors.username}</p>
+            {formik.touched.su_username && formik.errors.su_username ? (
+              <p className="error-message">{formik.errors.su_username}</p>
             ) : null}
           </div>
           <div className="input-group">
             <input
-              id="password"
-              name="password"
+              id="su_password"
+              name="su_password"
               type="password"
               placeholder="Password"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.password}
+              value={formik.values.su_password}
             />
-            {formik.touched.password && formik.errors.password ? (
-              <p className="error-message">{formik.errors.password}</p>
+            {formik.touched.su_password && formik.errors.su_password ? (
+              <p className="error-message">{formik.errors.su_password}</p>
             ) : null}
           </div>
           <div className="input-group">
             <input
-              id="confirmPassword"
-              name="confirmPassword"
+              id="su_confirmPassword"
+              name="su_confirmPassword"
               type="password"
               placeholder="Confirm password"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.confirmPassword}
+              value={formik.values.su_confirmPassword}
             />
-            {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-              <p className="error-message">{formik.errors.confirmPassword}</p>
+            {formik.touched.su_confirmPassword &&
+            formik.errors.su_confirmPassword ? (
+              <p className="error-message">
+                {formik.errors.su_confirmPassword}
+              </p>
             ) : null}
           </div>
           <button type="submit">Sign up</button>

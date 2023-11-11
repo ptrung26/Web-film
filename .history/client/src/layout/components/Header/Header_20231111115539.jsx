@@ -152,7 +152,7 @@ function Header() {
             onMouseLeave={() => showUserFeatures(false)}
           >
             <div className="header__users-area">
-              <p style={{ color: "#fff", marginRight: 12 }}> {user.username}</p>
+              <p style={{ color: "#fff" }}> {user.username}</p>
               <img
                 src={require("../../../assets/images/user.png")}
                 alt="user"

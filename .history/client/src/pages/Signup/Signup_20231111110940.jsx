@@ -14,26 +14,26 @@ export default function Signup() {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      username: "",
-      password: "",
-      confirmPassword: "",
+      su_username: "",
+      su_password: "",
+      su_confirmPassword: "",
     },
     validationSchema: Yup.object({
-      username: Yup.string()
-        .matches(/^[a-zA-Z0-9]*$/, "Only letters and numbers are allowed")
-        .min(8, "Username must be at least 8 characters")
-        .required("Username cannot be empty"),
-      password: Yup.string()
-        .min(8, "Password must be between 6 and 20 characters")
-        .max(20, "Password must be between 6 and 20 characters")
-        .required("Password cannot be empty")
+      su_username: Yup.string()
+        .matches(/^[a-zA-Z0-9]*$/, "Chỉ được nhập chữ và số")
+        .min(8, "Tài khoản phải ít nhất 3 ký tự")
+        .required("Tài khoản không được bỏ trống"),
+      su_password: Yup.string()
+        .min(8, "Mật khẩu phải từ 6 - 20 ký tự")
+        .max(20, "Mật khẩu phải từ 6 - 20 ký tự")
+        .required("Mật khẩu không được bỏ trống")
         .matches(
           /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/,
-          "Password must contain at least one letter, one digit, and one special character"
+          "Mật khẩu phải chứa ít nhất một chữ cái, một số, và một ký tự đặc biệt"
         ),
-      confirmPassword: Yup.string()
-        .required("Please confirm your password")
-        .oneOf([Yup.ref("password")], "Password confirmation does not match"),
+      su_confirmPassword: Yup.string()
+        .required("Phải nhập xác nhận mật khẩu")
+        .oneOf([Yup.ref("password")], "Mật khẩu xác nhận không trùng nhau"),
     }),
     onSubmit: async (values) => {
       values.color = randomRGBColor();
@@ -102,16 +102,16 @@ export default function Signup() {
           </div>
           <div className="input-group">
             <input
-              id="password"
-              name="password"
+              id="su_password"
+              name="su_password"
               type="password"
               placeholder="Password"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.password}
+              value={formik.values.su_password}
             />
-            {formik.touched.password && formik.errors.password ? (
-              <p className="error-message">{formik.errors.password}</p>
+            {formik.touched.su_password && formik.errors.su_password ? (
+              <p className="error-message">{formik.errors.su_password}</p>
             ) : null}
           </div>
           <div className="input-group">
@@ -122,10 +122,13 @@ export default function Signup() {
               placeholder="Confirm password"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.confirmPassword}
+              value={formik.values.su_confirmPassword}
             />
-            {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-              <p className="error-message">{formik.errors.confirmPassword}</p>
+            {formik.touched.su_confirmPassword &&
+            formik.errors.su_confirmPassword ? (
+              <p className="error-message">
+                {formik.errors.su_confirmPassword}
+              </p>
             ) : null}
           </div>
           <button type="submit">Sign up</button>

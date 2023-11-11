@@ -34,6 +34,11 @@ router.post(
         throw new Error("confirmPassword not match");
       return true;
     }),
+  body("displayName")
+    .exists()
+    .withMessage("displayName is required")
+    .isLength({ min: 8 })
+    .withMessage("displayName minimum 8 characters"),
   requestHandler.validate,
   userController.signup
 );

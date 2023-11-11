@@ -17,23 +17,19 @@ export default function Signup() {
       username: "",
       password: "",
       confirmPassword: "",
+      displayName: "",
     },
     validationSchema: Yup.object({
+      displayName: Yup.string().required("displayName is required"),
       username: Yup.string()
-        .matches(/^[a-zA-Z0-9]*$/, "Only letters and numbers are allowed")
-        .min(8, "Username must be at least 8 characters")
-        .required("Username cannot be empty"),
+        .min(8, "username minimum 8 characters")
+        .required("username is required"),
       password: Yup.string()
-        .min(8, "Password must be between 6 and 20 characters")
-        .max(20, "Password must be between 6 and 20 characters")
-        .required("Password cannot be empty")
-        .matches(
-          /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/,
-          "Password must contain at least one letter, one digit, and one special character"
-        ),
+        .min(8, "password minimum 8 characters")
+        .required("password is required"),
       confirmPassword: Yup.string()
-        .required("Please confirm your password")
-        .oneOf([Yup.ref("password")], "Password confirmation does not match"),
+        .required("Please retype your password.")
+        .oneOf([Yup.ref("password")], "Your passwords do not match."),
     }),
     onSubmit: async (values) => {
       values.color = randomRGBColor();
@@ -95,6 +91,20 @@ export default function Signup() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.username}
+            />
+            {formik.touched.username && formik.errors.username ? (
+              <p className="error-message">{formik.errors.username}</p>
+            ) : null}
+          </div>
+          <div className="input-group">
+            <input
+              id="displayName"
+              name="displayName"
+              type="text"
+              placeholder="Display name"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.displayName}
             />
             {formik.touched.username && formik.errors.username ? (
               <p className="error-message">{formik.errors.username}</p>
