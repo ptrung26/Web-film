@@ -21,7 +21,7 @@ export default function Signup() {
     validationSchema: Yup.object({
       username: Yup.string()
         .matches(/^[a-zA-Z0-9]*$/, "Only letters and numbers are allowed")
-        .min(8, "Username must be at least 8 characters")
+        .min(6, "Username must be at least 6 characters")
         .required("Username cannot be empty"),
       password: Yup.string()
         .min(6, "Password must be between 6 and 20 characters")
