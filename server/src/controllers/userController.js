@@ -6,6 +6,7 @@ const signup = async (req, res) => {
   try {
     const { username, password, color } = req.body;
     const user = new userModel();
+
     const checkUser = await userModel.findOne({ username });
     if (checkUser)
       return responseHandler.badrequest(res, "Username is already used");
