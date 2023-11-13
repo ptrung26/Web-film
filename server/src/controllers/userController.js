@@ -5,7 +5,8 @@ import responseHandler from "../handlers/responseHandler.js";
 const signup = async (req, res) => {
   try {
     const { username, password, color } = req.body;
-
+    if (checkUser)
+      return responseHandler.badrequest(res, "username already used");
     const user = new userModel();
 
     user.username = username;
