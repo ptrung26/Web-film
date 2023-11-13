@@ -14,11 +14,7 @@ router.post(
     .exists()
     .withMessage("username is required")
     .isLength({ min: 6 })
-    .withMessage("username minimum 6 characters")
-    .custom(async (value) => {
-      const user = await userModel.findOne({ username: value });
-      if (user) return Promise.reject("username already used");
-    }),
+    .withMessage("username minimum 6 characters"),
   body("password")
     .exists()
     .withMessage("password is required")
