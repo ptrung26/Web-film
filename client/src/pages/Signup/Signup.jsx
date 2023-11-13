@@ -59,19 +59,7 @@ export default function Signup() {
     if (!errorMessage) {
       return;
     }
-
-    toast.error(errorMessage, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-    return;
-  }, [errorMessage]);
+  });
 
   const randomRGBColor = () => {
     let r = Math.floor(Math.random() * 256);
@@ -93,12 +81,19 @@ export default function Signup() {
               name="username"
               type="text"
               placeholder="User name"
-              onChange={formik.handleChange}
+              onChange={(e) => {
+                formik.handleChange(e);
+                // Reset error message when user types
+                setErrorMessage(null);
+              }}
               onBlur={formik.handleBlur}
               value={formik.values.username}
             />
-            {formik.touched.username && formik.errors.username ? (
-              <p className="error-message">{formik.errors.username}</p>
+            {(formik.touched.username && formik.errors.username) ||
+            errorMessage ? (
+              <p className="error-message">
+                {formik.errors.username || errorMessage}
+              </p>
             ) : null}
           </div>
           <div className="input-group">
